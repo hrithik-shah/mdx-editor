@@ -1,19 +1,68 @@
 'use client'
+import {
+  BoldItalicUnderlineToggles,
+  Separator,
+  CreateLink,
+  BlockTypeSelect,
+  toolbarPlugin,
+  headingsPlugin,
+  linkPlugin,
+  linkDialogPlugin,
+  quotePlugin,
+  listsPlugin,
+  codeBlockPlugin,
+  codeMirrorPlugin,
+  MDXEditor,
+} from '@mdxeditor/editor'
 
-import { MDXEditor, MDXEditorMethods, headingsPlugin } from "@mdxeditor/editor"
-import {FC} from 'react'
+const markdown = `
+Click here to start editing this text.
 
-interface EditorProps {
-  markdown: string
-  editorRef?: React.MutableRefObject<MDXEditorMethods | null>
+Here's the familiar **bold**, *italic*, and <u>underline</u> formatting. 
+
+You can also have links, like this link to the [awesome React virtualization library](https://virtuoso.dev).
+
+* This is a list;
+* With some items.
+
+And a code block:
+
+\`\`\`js
+console.log("A javascript code block")
+\`\`\`
+
+There's a lot more you can find in [live demo](editor/demo).
+`
+const HomepageEditor: React.FC = () => {
+  return (
+    <div className=" overflow-y-auto max-h-[226px]">
+      <MDXEditor
+        markdown={markdown}
+        contentEditableClassName="prose"
+        plugins={[
+          headingsPlugin(),
+          codeBlockPlugin(),
+          codeMirrorPlugin({ codeBlockLanguages: { js: 'javascript', ts: 'typescript' } }),
+          linkPlugin(),
+          linkDialogPlugin(),
+          quotePlugin(),
+          listsPlugin(),
+          toolbarPlugin({
+            toolbarContents: () => {
+              return (
+                <>
+                  <BoldItalicUnderlineToggles />
+                  <Separator />
+                  <CreateLink />
+                  <BlockTypeSelect />
+                </>
+              )
+            },
+          }),
+        ]}
+      />
+    </div>
+  )
 }
 
-/**
- * Extend this Component further with the necessary plugins or props you need.
- * proxying the ref is necessary. Next.js dynamically imported components don't support refs. 
-*/
-const Editor: FC<EditorProps> = ({ markdown, editorRef }) => {
-  return <MDXEditor ref={editorRef} markdown={markdown} plugins={[headingsPlugin()]} />
-}
-
-export default Editor
+export default HomepageEditor
