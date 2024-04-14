@@ -17,8 +17,7 @@ import {
 } from '@mdxeditor/editor';
 
 const HomepageEditor: React.FC = () => {
-  // State to hold the current markdown content
-  const [markdown, setMarkdown] = useState(`
+  const [markdown, setMarkdown] = useState<string>(`
 Click here to start editing this text.
 
 Here's the familiar **bold**, *italic*, and <u>underline</u> formatting. 
@@ -37,12 +36,10 @@ console.log("A javascript code block")
 There's a lot more you can find in [live demo](editor/demo).
 `);
 
-  // Function to handle markdown content changes
   const handleMarkdownChange = (newMarkdown: string) => {
     setMarkdown(newMarkdown);
   };
 
-  // Function to download the current markdown as a file
   const downloadMarkdown = () => {
     const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8' });
     const href = URL.createObjectURL(blob);
@@ -53,6 +50,18 @@ There's a lot more you can find in [live demo](editor/demo).
     link.click();
     document.body.removeChild(link);
     URL.revokeObjectURL(href);
+  };
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files ? event.target.files[0] : null;
+    if (file && file.type === "text/markdown") {
+      const reader = new FileReader();
+      reader.onload = (e: ProgressEvent<FileReader>) => {
+        const text = e.target?.result;
+        setMarkdown(text?.toString() || '');
+      };
+      reader.readAsText(file);
+    }
   };
 
   return (
@@ -76,10 +85,15 @@ There's a lot more you can find in [live demo](editor/demo).
                 <Separator />
                 <CreateLink />
                 <BlockTypeSelect />
-                {/* Adding a download button */}
                 <button onClick={downloadMarkdown} style={{ marginLeft: '10px' }}>
                   Download Markdown
                 </button>
+                <input
+                  type="file"
+                  accept=".md"
+                  onChange={handleFileUpload}
+                  style={{ marginLeft: '10px' }}
+                />
               </>
             ),
           }),
