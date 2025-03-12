@@ -11,6 +11,7 @@
   "dependencies": {
     "@codemirror/lang-markdown": "^6.2.0",
     "@mdxeditor/editor": "^2.0.0",
+    "@radix-ui/react-aspect-ratio": "^1.1.2",
     "@types/node": "20.4.0",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
