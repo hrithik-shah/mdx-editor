@@ -1,0 +1,28 @@
+.blockEditor {
+  display: flex;
+  justify-content: stretch;
+  border-radius: var(--radius-medium);
+  padding: var(--spacing-2);
+  gap: var(--spacing-2);
+  align-items: center;
+  background: var(--baseBg);
+
+  & .nestedEditor {
+    flex-grow: 1;
+  }
+}
+
+.genericComponentName {
+  font-size: var(--text-sm);
+  color: var(--baseText);
+  padding-right: var(--spacing-2);
+}
+
+.inlineEditor {
+  display: inline-flex;
+  border-radius: var(--radius-medium);
+  padding: var(--spacing-1);
+  gap: var(--spacing-2);
+  align-items: center;
+  background: var(--baseBg);
+}

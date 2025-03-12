@@ -6,8 +6,10 @@
 
 .prose {
     font-family: "Inter", sans-serif;
-  }
-  
-  .prose strong {
+    position: relative;
+    width: max-content;
+}
+
+.prose strong {
     font-weight: 600;
-  }
+}
