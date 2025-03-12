@@ -84,15 +84,6 @@ export const VideoEditor: React.FC<VideoEditorProps> = ({ mdastNode, descriptor,
 
         const property = descriptor.props.find((prop) => prop.name === name)
 
-        if (property?.type === 'expression') {
-          acc.push({
-            type: 'mdxJsxAttribute',
-            name,
-            value: { type: 'mdxJsxAttributeValueExpression', value }
-          })
-          return acc
-        }
-
         acc.push({
           type: 'mdxJsxAttribute',
           name,
