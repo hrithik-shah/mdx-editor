@@ -102,7 +102,7 @@ export const MathEditor: React.FC<MathEditorProps> = ({ mdastNode, descriptor, P
 
     return (
         <MdxMath
-            latex={properties['latex']}
+            latex={ properties['latex'] }
         />
     )
 }

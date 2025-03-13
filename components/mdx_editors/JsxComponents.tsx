@@ -169,9 +169,10 @@ export const InsertMath = () => {
         insertJsx({
             name: 'Math',
             kind: 'text',
-            props: { latex: latex }
+            props: { latex: "$$" + latex + "$$" }
         });
 
+        setLatex("")
         setShowInput(false);
     }
 

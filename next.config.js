@@ -1,7 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
     images: {
-        domains: ['pixnio.com'],  // Add any other domains you need here
+        remotePatterns: [
+            {
+                protocol: "https",
+                hostname: "pixnio.com",
+            },
+            {
+                protocol: "https",
+                hostname: "cdn.example.com",
+            },
+        ],
     },
 }
 
