@@ -101,6 +101,8 @@ export const VideoEditor: React.FC<VideoEditorProps> = ({ mdastNode, descriptor,
   const PropertyEditorComponent = PropertyEditor ?? PropertyPopover
 
   return (
+      <div className={"jsxElement"}>
         <MdxVideo src={properties['src']} />
+      </div>
   )
 }

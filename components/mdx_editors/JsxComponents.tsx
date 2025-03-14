@@ -17,7 +17,7 @@ export const jsxComponentDescriptors: JsxComponentDescriptor[] = [
     {
         name: 'Video',
         kind: 'text',
-        source: './external',
+        source: '../mdx/Video',
         props: [{name: 'src', type: 'string'}],
         hasChildren: false,
         Editor: VideoEditor
@@ -25,7 +25,7 @@ export const jsxComponentDescriptors: JsxComponentDescriptor[] = [
     {
         name: 'Image',
         kind: 'text',
-        source: './external',
+        source: '../mdx/Image',
         props: [
             {name: 'img', type: 'string'},
             {name: 'alt', type: 'string'}
@@ -36,7 +36,7 @@ export const jsxComponentDescriptors: JsxComponentDescriptor[] = [
     {
         name: 'Math',
         kind: 'text',
-        source: './external',
+        source: '../mdx/Math',
         props: [
             {name: 'latex', type: 'string'}
         ],

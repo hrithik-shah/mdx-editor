@@ -101,8 +101,10 @@ export const MathEditor: React.FC<MathEditorProps> = ({ mdastNode, descriptor, P
     const PropertyEditorComponent = PropertyEditor ?? PropertyPopover
 
     return (
-        <MdxMath
-            latex={ properties['latex'] }
-        />
+        <div className={"jsxElement"}>
+            <MdxMath
+                latex={ properties['latex'] }
+            />
+        </div>
     )
 }

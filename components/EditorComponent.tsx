@@ -31,6 +31,7 @@ import { jsxComponentDescriptors, InsertVideo, InsertImage, InsertMath } from ".
 
 const HomepageEditor: React.FC = () => {
   const editorRef = useRef<MDXEditorMethods>(null);
+  const markdownRef = useRef([]);
 
   useEffect(() => {
     const savedMarkdown = localStorage.getItem("markdown");
